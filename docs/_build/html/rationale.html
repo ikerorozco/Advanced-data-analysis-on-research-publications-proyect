@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Justificación y Validación del Análisis con Grobid &mdash; documentación de Articles Analysis Grobid - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="API Reference" href="autoapi/index.html" />
+    <link rel="prev" title="Resultados Esperados" href="results.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Articles Analysis Grobid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalación y Configuración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Uso del Proyecto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Resultados Esperados</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Justificación y Validación del Análisis con Grobid</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduccion">Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metodologia">Metodología</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pipeline-con-grobid-y-seleccion-inicial-de-los-articulos">Pipeline con Grobid y Selección Inicial de los Artículos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extraccion-de-informacion">Extracción de Información</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nube-de-palabras-clave">Nube de Palabras Clave</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conteo-de-figuras-por-articulo">Conteo de Figuras por Artículo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extraccion-de-enlaces-externos">Extracción de Enlaces Externos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pruebas-y-validacion">Pruebas y Validación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pruebas-unitarias-archivo-test-py">Pruebas Unitarias (Archivo <code class="docutils literal notranslate"><span class="pre">test.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validacion-manual">Validación Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reproducibilidad-del-experimento">Reproducibilidad del Experimento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-del-entorno">Configuración del Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dockerizacion">Dockerización</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#posibles-mejoras-y-limitaciones">Posibles Mejoras y Limitaciones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#posibles-mejoras">Posibles Mejoras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limitaciones">Limitaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Articles Analysis Grobid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Justificación y Validación del Análisis con Grobid</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/rationale.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="justificacion-y-validacion-del-analisis-con-grobid">
+<h1>Justificación y Validación del Análisis con Grobid<a class="headerlink" href="#justificacion-y-validacion-del-analisis-con-grobid" title="Link to this heading"></a></h1>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading"></a></h2>
+<p>Este documento proporciona una justificación del enfoque utilizado para procesar y analizar
+10 artículos de acceso abierto mediante <strong>Grobid</strong>. Se detallan las decisiones metodológicas,
+las pruebas realizadas y la validación manual de los resultados obtenidos.</p>
+</section>
+<section id="metodologia">
+<h2>Metodología<a class="headerlink" href="#metodologia" title="Link to this heading"></a></h2>
+<section id="pipeline-con-grobid-y-seleccion-inicial-de-los-articulos">
+<h3>Pipeline con Grobid y Selección Inicial de los Artículos<a class="headerlink" href="#pipeline-con-grobid-y-seleccion-inicial-de-los-articulos" title="Link to this heading"></a></h3>
+<p>Se diseñó un pipeline automatizado que procesa documentos en PDF utilizando <strong>Grobid</strong>,
+una herramienta de extracción de datos estructurados en XML basada en modelos de aprendizaje automático.</p>
+<p>Los pasos del procesamiento son los siguientes:</p>
+<ol class="arabic simple">
+<li><p><strong>Subida de los documentos</strong>: Se almacenan los archivos en el directorio <code class="docutils literal notranslate"><span class="pre">data/</span></code>.</p></li>
+<li><p><strong>Ejecución de Grobid</strong>: Se utiliza la API de Grobid para convertir los PDFs en XMLs estructurados.</p></li>
+<li><p><strong>Extracción de información clave</strong>: Se extraen abstracts, figuras y enlaces a partir de los archivos XML generados.</p></li>
+<li><p><strong>Visualización de datos</strong>: Se generan una nube de palabras clave y un gráfico de figuras por artículo.</p></li>
+</ol>
+<p>El pipeline fue implementado en Python, utilizando <code class="docutils literal notranslate"><span class="pre">requests</span></code> para interactuar con la API de Grobid y
+<code class="docutils literal notranslate"><span class="pre">xml.etree.ElementTree</span></code> para parsear los archivos XML.</p>
+</section>
+<section id="extraccion-de-informacion">
+<h3>Extracción de Información<a class="headerlink" href="#extraccion-de-informacion" title="Link to this heading"></a></h3>
+<section id="nube-de-palabras-clave">
+<h4>Nube de Palabras Clave<a class="headerlink" href="#nube-de-palabras-clave" title="Link to this heading"></a></h4>
+<p><strong>Enfoque:</strong>
+- Se extraen los <strong>abstracts</strong> de los archivos XML generados.
+- Se combinan en un solo texto y se eliminan caracteres especiales.
+- Se genera una <strong>nube de palabras</strong> con <code class="docutils literal notranslate"><span class="pre">wordcloud.WordCloud</span></code>.</p>
+<p><strong>Validación:</strong>
+- Se revisó manualmente que los abstracts extraídos desde el XML correspondieran a los textos en los artículos originales.
+- Se verificó que las palabras clave reflejaran términos frecuentes en los abstracts procesados.
+- Se generaron diferentes versiones de la nube de palabras para confirmar que el resultado era consistente.</p>
+</section>
+<section id="conteo-de-figuras-por-articulo">
+<h4>Conteo de Figuras por Artículo<a class="headerlink" href="#conteo-de-figuras-por-articulo" title="Link to this heading"></a></h4>
+<p><strong>Enfoque:</strong>
+- Se buscan etiquetas <code class="docutils literal notranslate"><span class="pre">&lt;tei:figure&gt;</span></code> dentro del XML de cada artículo.
+- Se cuenta la cantidad de apariciones de esta etiqueta en cada archivo.
+- Se genera un gráfico de barras con <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>.</p>
+<p><strong>Validación:</strong>
+- Se realizó una <strong>comparación manual</strong> entre el número de figuras reportado y el número de imágenes visibles en los PDFs originales.
+- Se ajustó el código para asegurar que solo se contaran las figuras correctamente etiquetadas.
+- Se generaron gráficos en diferentes formatos para confirmar la consistencia de los resultados.</p>
+</section>
+<section id="extraccion-de-enlaces-externos">
+<h4>Extracción de Enlaces Externos<a class="headerlink" href="#extraccion-de-enlaces-externos" title="Link to this heading"></a></h4>
+<p><strong>Enfoque:</strong>
+- Se buscan etiquetas <code class="docutils literal notranslate"><span class="pre">&lt;tei:ref&gt;</span></code> en los XMLs.
+- Se extraen los valores del atributo <code class="docutils literal notranslate"><span class="pre">target</span></code>, descartando los enlaces internos.
+- Se almacenan en un archivo JSON (<code class="docutils literal notranslate"><span class="pre">links_per_paper.json</span></code>).</p>
+<p><strong>Validación:</strong>
+- Se realizó una <strong>verificación manual</strong> de los enlaces extraídos comparándolos con los que aparecen en los PDFs.
+- Se descartaron referencias que no correspondían a URLs externas.
+- Se utilizó una prueba con un PDF de ejemplo para asegurar que la extracción funcionaba correctamente.</p>
+</section>
+</section>
+</section>
+<section id="pruebas-y-validacion">
+<h2>Pruebas y Validación<a class="headerlink" href="#pruebas-y-validacion" title="Link to this heading"></a></h2>
+<section id="pruebas-unitarias-archivo-test-py">
+<h3>Pruebas Unitarias (Archivo <code class="docutils literal notranslate"><span class="pre">test.py</span></code>)<a class="headerlink" href="#pruebas-unitarias-archivo-test-py" title="Link to this heading"></a></h3>
+<p>Se desarrollaron pruebas automatizadas utilizando <code class="docutils literal notranslate"><span class="pre">pytest</span></code> para verificar la funcionalidad de los scripts:</p>
+<ul class="simple">
+<li><p><strong>Prueba de procesamiento de PDFs</strong>: Verifica que los XMLs se generen correctamente.</p></li>
+<li><p><strong>Prueba de extracción de abstracts</strong>: Confirma que los abstracts se extraen correctamente de los XMLs.</p></li>
+<li><p><strong>Prueba de conteo de figuras</strong>: Asegura que se detecten correctamente las figuras en cada artículo.</p></li>
+<li><p><strong>Prueba de extracción de enlaces</strong>: Valida que se extraigan URLs válidas de los XMLs.</p></li>
+<li><p><strong>Prueba de generación de la nube de palabras</strong>: Comprueba que el archivo <code class="docutils literal notranslate"><span class="pre">wordcloud.png</span></code> se genera correctamente.</p></li>
+<li><p><strong>Prueba de generación del gráfico de figuras</strong>: Confirma que <code class="docutils literal notranslate"><span class="pre">figures_per_paper.png</span></code> se genera correctamente.</p></li>
+</ul>
+</section>
+<section id="validacion-manual">
+<h3>Validación Manual<a class="headerlink" href="#validacion-manual" title="Link to this heading"></a></h3>
+<p>Además de las pruebas automatizadas, se realizó una <strong>validación manual</strong> de los resultados:</p>
+<ul class="simple">
+<li><p><strong>Comparación visual de los abstracts extraídos con los textos originales</strong> en los PDFs.</p></li>
+<li><p><strong>Verificación manual del conteo de figuras</strong>, asegurando que coincidiera con las imágenes en los artículos.</p></li>
+<li><p><strong>Revisión de los enlaces extraídos</strong> en comparación con los documentos originales.</p></li>
+</ul>
+</section>
+</section>
+<section id="reproducibilidad-del-experimento">
+<h2>Reproducibilidad del Experimento<a class="headerlink" href="#reproducibilidad-del-experimento" title="Link to this heading"></a></h2>
+<section id="configuracion-del-entorno">
+<h3>Configuración del Entorno<a class="headerlink" href="#configuracion-del-entorno" title="Link to this heading"></a></h3>
+<p>Se creó un archivo <strong>``requirements.txt``</strong> con todas las dependencias necesarias para ejecutar el pipeline.</p>
+</section>
+<section id="dockerizacion">
+<h3>Dockerización<a class="headerlink" href="#dockerizacion" title="Link to this heading"></a></h3>
+<p>Se desarrolló un <strong>Dockerfile</strong> y un archivo <strong>``docker-compose.yml``</strong> para contenerizar la aplicación y garantizar su correcta ejecución en cualquier entorno.</p>
+</section>
+</section>
+<section id="posibles-mejoras-y-limitaciones">
+<h2>Posibles Mejoras y Limitaciones<a class="headerlink" href="#posibles-mejoras-y-limitaciones" title="Link to this heading"></a></h2>
+<section id="posibles-mejoras">
+<h3>Posibles Mejoras<a class="headerlink" href="#posibles-mejoras" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Implementar una mejor filtración de palabras clave para mejorar la nube de palabras.</p></li>
+<li><p>Utilizar procesamiento de lenguaje natural (NLP) para identificar términos más relevantes en los abstracts.</p></li>
+<li><p>Aplicar reconocimiento de imágenes para analizar el contenido de las figuras en los artículos.</p></li>
+<li><p>Optimizar la extracción de enlaces, filtrando solo aquellos de interés para el análisis.</p></li>
+</ul>
+</section>
+<section id="limitaciones">
+<h3>Limitaciones<a class="headerlink" href="#limitaciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>La calidad de la extracción de datos depende de la estructura del XML generado por Grobid.</p></li>
+<li><p>Grobid puede no reconocer correctamente todos los elementos en algunos artículos, lo que puede afectar los resultados.</p></li>
+<li><p>La validación manual fue limitada a una muestra, por lo que podrían existir errores en algunos artículos.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="results.html" class="btn btn-neutral float-left" title="Resultados Esperados" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="autoapi/index.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Sergio Gonzalez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+    "@type": "SoftwareSourceCode",
+    "name": "ArticlesAnalysisGrobid",
+    "version": "1.0.0",
+    "author": {
+      "@type": "Person",
+      "name": "Sergio Gonzalez",
+      "email": "sergon20052005@gmail.com",
+      "affiliation": "Independiente"
+    },
+    "description": "Software para el análisis de artículos científicos mediante Grobid.",
+    "programmingLanguage": {
+      "@type": "ComputerLanguage",
+      "name": "Python",
+      "version": "3.10+"
+    },
+    "license": "GPL-3.0",
+    "codeRepository": "https://github.com/SergonM/ArticlesAnalysisGrobid",
+    "issueTracker": "https://github.com/SergonM/ArticlesAnalysisGrobid/issues",
+    "releaseNotes": "https://github.com/SergonM/ArticlesAnalysisGrobid/releases/tag/v1.0.0",
+    "downloadUrl": "https://github.com/SergonM/ArticlesAnalysisGrobid/archive/refs/tags/v1.0.0.zip",
+    "datePublished": "2025-03-04",
+    "dateModified": "2025-03-04",
+    "keywords": ["Grobid", "PDF analysis", "Scientific Articles", "Text Mining"],
+    "softwareRequirements": ["Python >=3.10", "Docker"],
+    "maintainer": {
+      "@type": "Person",
+      "name": "Sergio Gonzalez",
+      "email": "sergon20052005@gmail.com"
+    },
+    "citation": {
+      "@type": "CreativeWork",
+      "identifier": "https://doi.org/10.5281/zenodo.14968795",
+      "doi": "10.5281/zenodo.14968795"
+    }
+  }
+  

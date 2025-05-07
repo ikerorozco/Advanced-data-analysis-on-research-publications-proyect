@@ -1,0 +1,28 @@
+main
+====
+
+.. py:module:: main
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   main.check_grobid_alive
+   main.main_menu
+
+
+Module Contents
+---------------
+
+.. py:function:: check_grobid_alive()
+
+   Verifica si el servicio Grobid está activo antes de ejecutar cualquier tarea.
+
+
+.. py:function:: main_menu()
+
+   Menú principal para ejecutar opciones del pipeline.
+
+

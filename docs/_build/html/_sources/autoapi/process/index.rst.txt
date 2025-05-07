@@ -1,0 +1,28 @@
+process
+=======
+
+.. py:module:: process
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   process.process_pdf
+   process.process_all_pdfs
+
+
+Module Contents
+---------------
+
+.. py:function:: process_pdf(file_path)
+
+   Envía un PDF a Grobid y guarda la respuesta XML.
+
+
+.. py:function:: process_all_pdfs()
+
+   Procesa todos los PDFs en el directorio DATA_DIR.
+
+

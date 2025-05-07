@@ -1,0 +1,143 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uso del Proyecto &mdash; documentación de Articles Analysis Grobid - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Resultados Esperados" href="results.html" />
+    <link rel="prev" title="Instalación y Configuración" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Articles Analysis Grobid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalación y Configuración</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Uso del Proyecto</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#estructura-del-proyecto">📁 <strong>Estructura del Proyecto</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Resultados Esperados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Justificación y Validación del Análisis con Grobid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Articles Analysis Grobid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Uso del Proyecto</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="uso-del-proyecto">
+<h1>Uso del Proyecto<a class="headerlink" href="#uso-del-proyecto" title="Link to this heading"></a></h1>
+<section id="estructura-del-proyecto">
+<h2>📁 <strong>Estructura del Proyecto</strong><a class="headerlink" href="#estructura-del-proyecto" title="Link to this heading"></a></h2>
+<p>La estructura de archivos del repositorio es la siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── data/                  # 📂 PDFs de entrada para su procesamiento
+├── output/                # 📂 Resultados generados (XMLs, gráficos, JSONs)
+│   ├── wordcloud.png      # 📊 Nube de palabras basada en los abstracts
+│   ├── figures_per_paper.png # 📈 Número de figuras por artículo
+│   ├── links_per_paper.json  # 🔗 Lista de enlaces extraídos
+├── src/                   # 📂 Código fuente del pipeline
+│   ├── config.py          # ⚙️ Configuración del entorno y rutas
+│   ├── extraction.py      # 🔍 Extracción de abstracts, figuras y enlaces
+│   ├── process.py         # 🛠️ Envío de PDFs a Grobid y procesamiento
+│   ├── visualization.py   # 📊 Generación de gráficos y visualizaciones
+│   ├── main.py            # 🚀 Script principal del programa
+├── Dockerfile             # 🐳 Configuración de contenedor para la aplicación
+├── docker-compose.yml     # 🐳 Configuración de servicios (Grobid + App)
+├── requirements.txt       # 📦 Dependencias necesarias
+├── rationale.md           # 📝 Validación de los resultados obtenidos
+├── LICENSE                # ⚖️ Licencia del proyecto
+└── README.md              # 📖 Documentación del repositorio
+</pre></div>
+</div>
+<p>Para ejecutar el análisis, sigue las instrucciones de instalación y configuración.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Instalación y Configuración" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="results.html" class="btn btn-neutral float-right" title="Resultados Esperados" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Sergio Gonzalez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

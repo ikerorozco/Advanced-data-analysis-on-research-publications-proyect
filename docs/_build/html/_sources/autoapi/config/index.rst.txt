@@ -1,0 +1,59 @@
+config
+======
+
+.. py:module:: config
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   config.DATA_DIR
+   config.OUTPUT_DIR
+   config.GROBID_DIR
+   config.GROBID_URL
+   config.GROBID_ALIVE
+   config.HEADERS
+   config.NAMESPACE
+
+
+Module Contents
+---------------
+
+.. py:data:: DATA_DIR
+   :value: 'data/'
+
+
+.. py:data:: OUTPUT_DIR
+   :value: 'output/'
+
+
+.. py:data:: GROBID_DIR
+   :value: 'grobid-0.8.1/'
+
+
+.. py:data:: GROBID_URL
+
+   URL del servicio Grobid para el procesamiento de documentos.
+
+   :type: str
+
+.. py:data:: GROBID_ALIVE
+
+   URL para verificar si Grobid está activo.
+
+   :type: str
+
+.. py:data:: HEADERS
+
+   Cabeceras HTTP utilizadas para las peticiones a Grobid.
+
+   :type: dict
+
+.. py:data:: NAMESPACE
+
+   Namespace utilizado en los archivos XML TEI.
+
+   :type: dict
+

@@ -1,0 +1,34 @@
+extraction
+==========
+
+.. py:module:: extraction
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   extraction.extract_abstracts
+   extraction.count_figures
+   extraction.extract_links
+
+
+Module Contents
+---------------
+
+.. py:function:: extract_abstracts()
+
+   Extrae los abstracts de los archivos XML procesados.
+
+
+.. py:function:: count_figures()
+
+   Cuenta el número de figuras en cada artículo.
+
+
+.. py:function:: extract_links()
+
+   Extrae enlaces externos de los artículos y los asocia a su contexto.
+
+

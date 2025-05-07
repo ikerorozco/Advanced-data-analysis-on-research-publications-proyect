@@ -1,0 +1,28 @@
+visualization
+=============
+
+.. py:module:: visualization
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   visualization.generate_wordcloud
+   visualization.plot_figures
+
+
+Module Contents
+---------------
+
+.. py:function:: generate_wordcloud()
+
+   Genera una nube de palabras basada en los abstracts.
+
+
+.. py:function:: plot_figures()
+
+   Genera un gráfico del número de figuras en cada artículo.
+
+
